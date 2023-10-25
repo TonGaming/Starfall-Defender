@@ -41,3 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Engine Effects
+    uniqueID: 3636748629
+    locked: 0
+  - name: Ships
+    uniqueID: 2506151193
+    locked: 0
