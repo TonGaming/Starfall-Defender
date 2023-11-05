@@ -10,5 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c3123fef52173f41beea91feefe94d7, type: 3}
-  m_Name: New Wave Config
+  m_Name: WaveConfigSO
   m_EditorClassIdentifier: 
+  pathPrefab: {fileID: 2301940445618409876, guid: 5510924f9b05be84e915a3098db84cb7, type: 3}
+  enemyMoveSpeed: 4

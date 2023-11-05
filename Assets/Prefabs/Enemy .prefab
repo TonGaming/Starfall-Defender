@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 104.986145, y: 37.519978, z: 1.5350379}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.81438, y: 0.81438, z: 0.81438}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8954459460144594172}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 7394046961029623251}
   - component: {fileID: 9019795200884922039}
   - component: {fileID: 4534455670129093075}
-  - component: {fileID: 6018810727831132638}
+  - component: {fileID: 2991802352982427974}
   m_Layer: 0
   m_Name: Enemy Ship
   m_TagString: Untagged
@@ -60,9 +60,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6589352404863269666}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -106.91, y: -37.61, z: -1.5350379}
-  m_LocalScale: {x: 0.8851, y: -0.8851, z: 0.8851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.71716, y: 0.71716, z: 0.71716}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4702423349308871361}
@@ -108,12 +108,12 @@ SpriteRenderer:
   m_SortingLayerID: -1788816103
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4bc19bd04d7d7fb4fac960b9626e50f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dd5309120a2688a40a8cfe62c1dbb5d4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 2.90625, y: 2.625}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -181,24 +181,15 @@ CapsuleCollider2D:
   m_Offset: {x: 0.0029896938, y: 0.05680684}
   m_Size: {x: 0.6426148, y: 1.1209884}
   m_Direction: 0
---- !u!95 &6018810727831132638
-Animator:
-  serializedVersion: 5
+--- !u!114 &2991802352982427974
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6589352404863269666}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 77d1211b80d379447bdca233c463bce3, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6531b82e1e5f7744295f8aae45e33934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
