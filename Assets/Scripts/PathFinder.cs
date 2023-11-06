@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class PathFinder : MonoBehaviour
 {
-    [SerializeField] WaveConfigSO waveConfig;
-
+    // hạn chế cả PathFinder và EnemySpawner đều có SerializeField gọi tới SO, chỉ để EnemySpawner gọi tới thôi và waveConfig sẽ thông qua enemySpawner
+    WaveConfigSO waveConfig;
+    EnemySpawner enemySpawner;
 
 
     List<Transform> waypoints ;
 
     int waypointsIndex = 0;
 
+    void Awake()
+    {
+        
+        enemySpawner = FindObjectOfType<EnemySpawner>();
+    }
 
     void Start()
     {
+        // Gọi tới WaveConfigSO thông qua EnemySpawner
+        waveConfig = enemySpawner.GetCurrentWave();
 
         // sau đó gán list waypoints đã có sẵn vào list waypoints mới tạo bên này
         waypoints = waveConfig.GetWaypoints();

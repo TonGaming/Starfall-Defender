@@ -7,9 +7,26 @@ using UnityEngine;
 public class WaveConfigSO : ScriptableObject
 {
     // để cài prefabs path vào 
+    [SerializeField] List<GameObject> enemyPrefabs;
+
     [SerializeField] Transform pathPrefab;
     [SerializeField] float enemyMoveSpeed;
-    
+
+
+    // Get ra so luong cua enemy trong list
+    public int GetEnemyCount()
+    {
+        return enemyPrefabs.Count;
+    }
+
+    // get ra mot enemy cu the 
+    public GameObject GetEnemyPrefab(int enemyIndex)
+    {
+        return enemyPrefabs[enemyIndex];
+    }
+
+
+
     public float GetEnemyMoveSpeed()
     {
         return enemyMoveSpeed;
@@ -33,6 +50,8 @@ public class WaveConfigSO : ScriptableObject
 
         return waypointsList;
     }
+
+    
 }
 
 
