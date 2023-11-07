@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] int delayTime = 1;
+
     [SerializeField] WaveConfigSO currentWave;
 
-    int enemyIndex;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        SpawnEnemies();
+        StartCoroutine(SpawnEnemies());
     }
 
     // Get ra WaveConfigSO hiện tại
@@ -21,26 +21,20 @@ public class EnemySpawner : MonoBehaviour
         return currentWave;
     }
 
-    void SpawnEnemies()
+    IEnumerator SpawnEnemies()
     {
         for (int enemyIndex = 0; enemyIndex < currentWave.GetEnemyCount(); enemyIndex++)
         {
-            
-
-            StartCoroutine(EnemiesDelay());
-            
-        }
-    }
-
-    IEnumerator EnemiesDelay()
-    {
-        yield return new WaitForSecondsRealtime(delayTime);
-
-        Instantiate(currentWave.GetEnemyPrefab(enemyIndex),
+            Instantiate(currentWave.GetEnemyPrefab(enemyIndex),
                           currentWave.GetStartingWaypoint().position,
                           Quaternion.identity,
                           transform
                           );
 
+            yield return new  WaitForSecondsRealtime(currentWave.GetRandomSpawnTime());
+
+        }
     }
+
+
 }

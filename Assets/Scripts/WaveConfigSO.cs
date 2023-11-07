@@ -12,6 +12,9 @@ public class WaveConfigSO : ScriptableObject
     [SerializeField] Transform pathPrefab;
     [SerializeField] float enemyMoveSpeed;
 
+    [SerializeField] float timeBetweenEnemySpawn = 1f;
+    [SerializeField] float timeVariance = 0.5f;
+    [SerializeField] float minSpawnTime = 0.2f;
 
     // Get ra so luong cua enemy trong list
     public int GetEnemyCount()
@@ -51,7 +54,16 @@ public class WaveConfigSO : ScriptableObject
         return waypointsList;
     }
 
-    
+    public float GetRandomSpawnTime()
+    {
+        // tạo một temp value để lưu giá trị random của thời gian enemy spawn
+        float spawnTime = Random.Range(timeBetweenEnemySpawn - timeVariance, 
+                                            timeBetweenEnemySpawn + timeVariance);
+
+        // Clamp tất cả các giá trị của spawnTime nằm ngoài khoảng min và max 
+        return Mathf.Clamp(spawnTime, minSpawnTime, timeBetweenEnemySpawn + timeVariance);
+    }
+
 }
 
 
