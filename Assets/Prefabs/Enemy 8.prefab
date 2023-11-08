@@ -9,9 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5177933939830995475}
+  - component: {fileID: 8101531534862899608}
   - component: {fileID: -3027659229822945070}
+  - component: {fileID: 9053899212777123976}
+  - component: {fileID: 5510145094743718475}
   - component: {fileID: 1892631979744477335}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy 8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34,6 +37,18 @@ Transform:
   - {fileID: 379937600221363621}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8101531534862899608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955465459855485409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6531b82e1e5f7744295f8aae45e33934, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &-3027659229822945070
 Rigidbody2D:
   serializedVersion: 4
@@ -61,6 +76,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &9053899212777123976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955465459855485409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b21ffccb92d962f42b4284fa311af11d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 50
+--- !u!114 &5510145094743718475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955465459855485409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04158a858cb18a545a2e51b015ac7968, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 25
 --- !u!70 &1892631979744477335
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -90,7 +131,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.019523563, y: -0.03514395}
@@ -106,8 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 379937600221363621}
   - component: {fileID: 1492805294008765196}
-  - component: {fileID: 8628634007677367260}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy Ship (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,15 +221,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8628634007677367260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3802266206161861600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6531b82e1e5f7744295f8aae45e33934, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
