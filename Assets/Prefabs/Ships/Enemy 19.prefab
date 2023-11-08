@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5177933939830995475}
-  - component: {fileID: 5274360254175810053}
-  - component: {fileID: -9125061458761819840}
-  - component: {fileID: -846846487929517589}
-  - component: {fileID: 7398999985101519691}
-  - component: {fileID: 395622551521305116}
-  m_Layer: 3
-  m_Name: Enemy 15
+  - component: {fileID: 3025333031252260146}
+  - component: {fileID: 5665927510435541870}
+  - component: {fileID: 4734071965305020961}
+  - component: {fileID: 6355001720115014516}
+  - component: {fileID: 3262435476176099295}
+  m_Layer: 7
+  m_Name: Enemy 19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,13 +31,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.59341, y: 0.59341, z: 0.59341}
+  m_LocalScale: {x: 0.35213548, y: 0.35213548, z: 0.35213548}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 379937600221363621}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5274360254175810053
+--- !u!114 &3025333031252260146
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6531b82e1e5f7744295f8aae45e33934, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!50 &-9125061458761819840
+--- !u!50 &5665927510435541870
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -76,7 +76,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-846846487929517589
+--- !u!114 &4734071965305020961
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
---- !u!114 &7398999985101519691
+--- !u!114 &6355001720115014516
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 25
---- !u!70 &395622551521305116
+--- !u!70 &3262435476176099295
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -134,8 +134,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0000000063896755, y: -0.05360049}
-  m_Size: {x: 2.43147, y: 2.43147}
+  m_Offset: {x: 0, y: -0.06258805}
+  m_Size: {x: 0.5, y: 0.8748236}
   m_Direction: 1
 --- !u!1 &3802266206161861600
 GameObject:
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 379937600221363621}
   - component: {fileID: 1492805294008765196}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Enemy Ship (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ SpriteRenderer:
   m_SortingLayerID: -1788816103
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: dd5309120a2688a40a8cfe62c1dbb5d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1561e3e01e7a46c41a95b38fff557197, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

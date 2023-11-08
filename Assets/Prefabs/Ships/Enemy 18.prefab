@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8763266638077102007}
   - component: {fileID: 2615504056847046708}
   - component: {fileID: 3124887035656600235}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Enemy 18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 379937600221363621}
   - component: {fileID: 1492805294008765196}
-  m_Layer: 3
+  m_Layer: 7
   m_Name: Enemy Ship (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
