@@ -12,7 +12,6 @@ public class Player : MonoBehaviour
     [SerializeField] float paddingLeft = 1f;
     [SerializeField] float paddingRight = 1f;
 
-
     Vector2 moveInput;
 
     // Vector toạ độ để giới hạn sự di chuyển của người chơi
@@ -21,7 +20,11 @@ public class Player : MonoBehaviour
 
     Rigidbody2D playerRigidbody;
 
-
+    Shooter shooter; 
+    private void Awake()
+    {
+        shooter = FindObjectOfType<Shooter>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -82,5 +85,18 @@ public class Player : MonoBehaviour
 
 
 
+    }
+
+    void OnFire(InputValue value)
+    {
+        if (value.isPressed)
+        {
+            shooter.isFiring = true;
+        } else
+        {
+            shooter.isFiring = false;
+        }
+
+        // alternatives: shooter.isFiring = value.isPressed
     }
 }
