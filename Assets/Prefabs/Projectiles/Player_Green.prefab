@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8838918609300633187}
   - component: {fileID: 5585452516694124275}
   - component: {fileID: 2662187787177328739}
+  - component: {fileID: -7209860415435453812}
   - component: {fileID: 6151736610847315324}
   m_Layer: 8
   m_Name: Player_Green
@@ -181,6 +182,20 @@ CapsuleCollider2D:
   m_Offset: {x: -0.004104078, y: -0.0027359724}
   m_Size: {x: 0.21271658, y: 0.85772634}
   m_Direction: 0
+--- !u!114 &-7209860415435453812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2164637316664965211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f157e97f37ee8a4f895cc87030c494f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpeed: 10
+  bulletLifeTime: 5
 --- !u!114 &6151736610847315324
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     Rigidbody2D playerRigidbody;
 
-    Shooter shooter; 
+    Shooter shooter;
     private void Awake()
     {
         shooter = FindObjectOfType<Shooter>();
@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         // cta bỏ qua trục Z vì đây là game 2D, nên chỉ cần Vector2 là đủ
 
         // điểm dưới trái của ViewPort (0, 0)
-        minBounds = mainCamera.ViewportToWorldPoint(new Vector2(0,0)) ;
+        minBounds = mainCamera.ViewportToWorldPoint(new Vector2(0, 0));
         // điểm trên phải của ViewPort (1,1)
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 1));
     }
@@ -61,25 +61,26 @@ public class Player : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        moveInput = value.Get<Vector2>() ;
-        
+        moveInput = value.Get<Vector2>();
+
 
     }
 
     void Fly()
-    {;
+    {
+        ;
 
         // di chuyển player = velocity của rigidbody
-        playerRigidbody.velocity = new Vector2(moveInput.x * moveSpeed , moveInput.y * moveSpeed );
+        playerRigidbody.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
 
         // tạo một biến và gán vị trí của player vào đó để kiểm tra xem có vượt ra ngoài ViewPort không
         Vector2 newPos = new Vector2();
 
         // kiểm tra giá trị toạ độ trục X - Hàm Clamp là sẽ loại bỏ tất cả giá trị truyền vào vượt quá 
-        newPos.x = Mathf.Clamp(transform.position.x , minBounds.x + paddingLeft, maxBounds.x - paddingRight);
+        newPos.x = Mathf.Clamp(transform.position.x, minBounds.x + paddingLeft, maxBounds.x - paddingRight);
 
         // kiểm tra giá trị toạ độ trục Y
-        newPos.y = Mathf.Clamp(transform.position.y , minBounds.y + paddingBottom, maxBounds.y - paddingTop);
+        newPos.y = Mathf.Clamp(transform.position.y, minBounds.y + paddingBottom, maxBounds.y - paddingTop);
         transform.position = newPos;
 
 
@@ -89,14 +90,15 @@ public class Player : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        if (value.isPressed)
-        {
-            shooter.isFiring = true;
-        } else
-        {
-            shooter.isFiring = false;
-        }
+        //if (value.isPressed)
+        //{
+        //    shooter.isFiring = true;
+        //}
+        //else
+        //{
+        //    shooter.isFiring = false;
+        //}
 
-        // alternatives: shooter.isFiring = value.isPressed
+        shooter.isFiring = value.isPressed;
     }
 }
