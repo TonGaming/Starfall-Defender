@@ -12,9 +12,9 @@ public class WaveConfigSO : ScriptableObject
     [SerializeField] Transform pathPrefab;
     [SerializeField] float enemyMoveSpeed;
 
-    [SerializeField] float timeBetweenEnemySpawn = 1f;
-    [SerializeField] float timeVariance = 0.5f;
     [SerializeField] float minSpawnTime = 0.2f;
+    [SerializeField] float timeVariance = 0.5f;
+    [SerializeField] float timeBetweenEnemySpawn = 1f;
 
     // Get ra so luong cua enemy trong list
     public int GetEnemyCount()

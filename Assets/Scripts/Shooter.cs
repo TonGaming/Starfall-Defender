@@ -5,21 +5,34 @@ using UnityEngine.Experimental.GlobalIllumination;
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] GameObject playerBullet;
+    [Header("General")]
+    [SerializeField] GameObject bullet;
 
     [SerializeField] float bulletSpeed = 10f;
     [SerializeField] float bulletLifeTime = 5f;
 
-    [SerializeField] float fireRate = .5f;
+    [Header("Fire Rate Modifications")]
+    [SerializeField] float fireRatePlayer = 1f;
+    [SerializeField] float fireRateBased = 1f;
+    [SerializeField] float fireRateMaximum = 2f;
+    [SerializeField] float fireRateVariance = .5f;
 
-    public bool isFiring;
+    [Header("AI thinggy")]
+    [SerializeField] bool useAI; 
+    
+
+    [HideInInspector] public bool isFiring;
+
+    // private things
     bool isReload = false;
-
     Coroutine firingCoroutine;
 
     void Start()
     {
-
+        if (useAI)
+        {
+            isFiring = true;
+        }
     }
 
     void Update()
@@ -39,6 +52,7 @@ public class Shooter : MonoBehaviour
             // Gỡ Coroutine ra khỏi biến để bắn thì có chỗ gán coroutine vào 
             // StopCoroutine(firingCoroutine);
             // firingCoroutine = null;
+
             return; 
 
         }
@@ -49,10 +63,10 @@ public class Shooter : MonoBehaviour
     {
         do
         {
-            Vector3 gunPoint = new Vector3(transform.position.x + 0.2f, transform.position.y, transform.position.z);
+            Vector3 gunPoint = new Vector3(transform.position.x , transform.position.y + 0.2f, transform.position.z);
 
             // Gán viên đạn đc spawn ra vào một biến 
-            GameObject spawnedBullet = Instantiate(playerBullet, gunPoint, Quaternion.identity);
+            GameObject spawnedBullet = Instantiate(bullet, gunPoint, Quaternion.identity);
 
             // Get ra rigidbody của viên đạn vừa spawn
             Rigidbody2D bulletRigidbody = spawnedBullet.GetComponent<Rigidbody2D>();
@@ -65,7 +79,25 @@ public class Shooter : MonoBehaviour
 
             // Khi bắn đạn ra rồi thì bật biến bool lên để ngăn k cho bắn ra quá nhiều đạn một lúc mà phải đợi fireRate
             isReload = true;
-            yield return new  WaitForSecondsRealtime(fireRate);
+
+            if (useAI)
+            {
+                // một cách làm random logic, một cách khác xem ở EnemySpawner
+                float fireRateForBots = Random.Range(fireRateBased - fireRateVariance, fireRateMaximum + fireRateVariance);
+
+                // Clamp giá trị random để bảo đảm k có giá trị âm 
+                fireRateForBots = Mathf.Clamp(fireRateForBots, fireRateVariance, fireRateMaximum + fireRateVariance);
+
+                // sau khoảng tgian random thì triển khai
+            yield return new  WaitForSecondsRealtime(fireRateForBots);
+
+            } 
+            // nếu kp AI (là player) thì không cần Random mà sẽ chạy fixed 
+            else if (!useAI)
+            {
+                yield return new WaitForSecondsRealtime(fireRatePlayer);
+
+            }
 
             isReload = false;   
         }
