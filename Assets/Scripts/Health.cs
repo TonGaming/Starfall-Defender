@@ -6,6 +6,7 @@ public class Health : MonoBehaviour
 {
     [SerializeField] int health = 50;
 
+    [SerializeField] ParticleSystem hitEffects;
     public int GetHealth()
     {
         return health;
@@ -22,6 +23,9 @@ public class Health : MonoBehaviour
         {
             // ăn dame và trừ máu
             TakeDamage(damageDealer.GetDamage());
+            
+            PlayHitEffects();
+
 
             // kẻ địch sẽ bị huỷ đi khi chạm vào ng chơi
             damageDealer.Explode();
@@ -40,4 +44,15 @@ public class Health : MonoBehaviour
         }
     }
     
+    void PlayHitEffects()
+    {
+        if (hitEffects != null)
+        {
+            // gán vào một biến tạm thời
+            ParticleSystem instance = Instantiate(hitEffects, transform.position, Quaternion.identity);
+
+            // huỷ đi sau khi hết thời gian chạy particles
+            Destroy(instance.gameObject, instance.main.duration + instance.main.startLifetime.constantMax);
+        }
+    }
 }
