@@ -7,6 +7,19 @@ public class Health : MonoBehaviour
     [SerializeField] int health = 50;
 
     [SerializeField] ParticleSystem hitEffects;
+
+    // get ra object CameraShake
+    CameraShake cameraShake;
+
+    // bool này chỉ dành cho player ship chứ k dành cho enemy
+    [SerializeField] bool applyingCameraShake;
+
+    void Awake()
+    {
+        cameraShake = FindObjectOfType<CameraShake>();   
+        // cameraShake = Camera.main.GetComponent<CameraShake>();
+    }
+
     public int GetHealth()
     {
         return health;
@@ -26,6 +39,8 @@ public class Health : MonoBehaviour
             
             PlayHitEffects();
 
+            // chạy hàm lắc màn hình
+            ShakeCamera();
 
             // kẻ địch sẽ bị huỷ đi khi chạm vào ng chơi
             damageDealer.Explode();
@@ -53,6 +68,14 @@ public class Health : MonoBehaviour
 
             // huỷ đi sau khi hết thời gian chạy particles
             Destroy(instance.gameObject, instance.main.duration + instance.main.startLifetime.constantMax);
+        }
+    }
+
+    void ShakeCamera()
+    {
+        if (cameraShake != null && applyingCameraShake)
+        {
+            cameraShake.ShakeCamera();
         }
     }
 }
