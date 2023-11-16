@@ -11,9 +11,10 @@ public class DamageDealer : MonoBehaviour
         return damage;
     }
 
-    public void Explode()
+    public void Hit()
     {
         Destroy(gameObject);
+
     }
 
 

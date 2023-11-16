@@ -27,6 +27,14 @@ public class Shooter : MonoBehaviour
     bool isReload = false;
     Coroutine firingCoroutine;
 
+    AudioPlayer audioPlayer;
+
+
+    void Awake()
+    {
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+    }
+
     void Start()
     {
         if (useAI)
@@ -79,6 +87,9 @@ public class Shooter : MonoBehaviour
 
             // Khi bắn đạn ra rồi thì bật biến bool lên để ngăn k cho bắn ra quá nhiều đạn một lúc mà phải đợi fireRate
             isReload = true;
+
+            // Mỗi khi bắn thì lai goi tới file âm thanh và chạy âm thanh chiu chiu
+            audioPlayer.PlayShootingClip();
 
             if (useAI)
             {

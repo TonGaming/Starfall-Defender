@@ -14,10 +14,15 @@ public class Health : MonoBehaviour
     // bool này chỉ dành cho player ship chứ k dành cho enemy
     [SerializeField] bool applyingCameraShake;
 
+    AudioPlayer audioPlayer;
+
     void Awake()
     {
         cameraShake = FindObjectOfType<CameraShake>();   
         // cameraShake = Camera.main.GetComponent<CameraShake>();
+
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+
     }
 
     public int GetHealth()
@@ -43,7 +48,7 @@ public class Health : MonoBehaviour
             ShakeCamera();
 
             // kẻ địch sẽ bị huỷ đi khi chạm vào ng chơi
-            damageDealer.Explode();
+            damageDealer.Hit();
 
 
         }
@@ -56,6 +61,7 @@ public class Health : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            audioPlayer.PlayExplodingClip();
         }
     }
     
@@ -76,6 +82,11 @@ public class Health : MonoBehaviour
         if (cameraShake != null && applyingCameraShake)
         {
             cameraShake.ShakeCamera();
+
+            // chạy âm thanh ăn đạn - để tạm vào đây vì nếu để chung thì bắn chung kẻ địch cũng có sound(nhức đầu)
+            audioPlayer.PlayHurtClip();
         }
+
+
     }
 }
