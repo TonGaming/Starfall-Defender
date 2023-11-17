@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
+
     [SerializeField] int health = 50;
 
     [SerializeField] ParticleSystem hitEffects;
@@ -12,17 +13,26 @@ public class Health : MonoBehaviour
     CameraShake cameraShake;
 
     // bool này chỉ dành cho player ship chứ k dành cho enemy
+    [SerializeField] bool isPlayer;
     [SerializeField] bool applyingCameraShake;
+
+    // Scoring System
+    [SerializeField] float scorePerKill = 50f; 
 
     AudioPlayer audioPlayer;
 
+    ScoreKeeper scoreKeeper;
+
     void Awake()
     {
-        cameraShake = FindObjectOfType<CameraShake>();   
+        cameraShake = FindObjectOfType<CameraShake>();
         // cameraShake = Camera.main.GetComponent<CameraShake>();
 
         audioPlayer = FindObjectOfType<AudioPlayer>();
 
+
+
+        scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
 
     public int GetHealth()
@@ -41,7 +51,7 @@ public class Health : MonoBehaviour
         {
             // ăn dame và trừ máu
             TakeDamage(damageDealer.GetDamage());
-            
+
             PlayHitEffects();
 
             // chạy hàm lắc màn hình
@@ -50,7 +60,7 @@ public class Health : MonoBehaviour
             // kẻ địch sẽ bị huỷ đi khi chạm vào ng chơi
             damageDealer.Hit();
 
-
+            
         }
     }
 
@@ -58,13 +68,32 @@ public class Health : MonoBehaviour
     {
         health -= damage;
 
+        //if (health <= 0)
+        //{
+        //    Destroy(gameObject);
+        //    audioPlayer.PlayExplodingClip();
+
+        //}
+        // nếu là player thì điểm giữ nguyên
         if (health <= 0)
         {
-            Destroy(gameObject);
-            audioPlayer.PlayExplodingClip();
+            Die();
         }
     }
-    
+
+    void Die()
+    {
+        Destroy(gameObject);
+        audioPlayer.PlayExplodingClip();
+
+        if (!isPlayer)
+        {
+            // tăng điểm khi kp player
+            scoreKeeper.IncreaseCurrentScore(scorePerKill);
+
+        }
+    }
+
     void PlayHitEffects()
     {
         if (hitEffects != null)
@@ -83,10 +112,10 @@ public class Health : MonoBehaviour
         {
             cameraShake.ShakeCamera();
 
-            // chạy âm thanh ăn đạn - để tạm vào đây vì nếu để chung thì bắn chung kẻ địch cũng có sound(nhức đầu)
-            audioPlayer.PlayHurtClip();
+            
         }
 
-
+        // chạy âm thanh ăn đạn 
+        audioPlayer.PlayHurtClip();
     }
 }
