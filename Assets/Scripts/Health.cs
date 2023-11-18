@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -17,11 +18,14 @@ public class Health : MonoBehaviour
     [SerializeField] bool applyingCameraShake;
 
     // Scoring System
-    [SerializeField] float scorePerKill = 50f; 
+    [SerializeField] float scorePerKill = 50f;
+    [SerializeField] GameObject fillArea;
 
     AudioPlayer audioPlayer;
 
     ScoreKeeper scoreKeeper;
+
+    LevelManager levelManager;
 
     void Awake()
     {
@@ -30,7 +34,7 @@ public class Health : MonoBehaviour
 
         audioPlayer = FindObjectOfType<AudioPlayer>();
 
-
+        levelManager = FindObjectOfType<LevelManager>();
 
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
@@ -91,6 +95,11 @@ public class Health : MonoBehaviour
             // tăng điểm khi kp player
             scoreKeeper.IncreaseCurrentScore(scorePerKill);
 
+        } 
+        else if (isPlayer)
+        {
+            fillArea.SetActive(false) ;
+            levelManager.StartGORoutine();
         }
     }
 
