@@ -30,7 +30,7 @@ public class UIDisplay : MonoBehaviour
 
 
 
-        playerScoreText.text = playerScore.GetCurrentScore().ToString("00000000");
+        playerScoreText.text = playerScore.GetCurrentScore().ToString("00000");
     }
 
 

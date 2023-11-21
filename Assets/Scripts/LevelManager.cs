@@ -13,7 +13,7 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] float delayTime = 1f;
 
-    private void Start()
+    private void Awake()
     {
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
     }
@@ -27,13 +27,24 @@ public class LevelManager : MonoBehaviour
     
     public void LoadGame()
     {
+
         SceneManager.LoadScene("CoreGame");
+
     }
 
-    public void StartGORoutine()
+    public void ResetAndLoadGame()
+    {
+        SceneManager.LoadScene("CoreGame");
+
+        scoreKeeper.ResetCurrentScore();
+    }
+
+    public void StartGORoutine() // GameOver Routine
     {
         StartCoroutine(LoadGameOver());
     }
+
+    
 
     public IEnumerator LoadGameOver()
     {
@@ -41,9 +52,9 @@ public class LevelManager : MonoBehaviour
 
         SceneManager.LoadScene("GameOverMenu");
 
-        playerScore = scoreKeeper.GetCurrentScore();
+        //playerScore = scoreKeeper.GetCurrentScore();
 
-        playerScoreUI.text = "YOUR SCORE:\n" + playerScore;
+        //playerScoreUI.text = "Dung dz123123123:\n" + playerScore;
     }
 
     public void ExitGame()

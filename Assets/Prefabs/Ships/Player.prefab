@@ -196,9 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21ffccb92d962f42b4284fa311af11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 50
+  health: 75
   hitEffects: {fileID: 2189265254340297023, guid: a1bd805d5a6a8594caafc8c3425a4671, type: 3}
+  isPlayer: 1
   applyingCameraShake: 1
+  scorePerKill: 50
+  fillArea: {fileID: 0}
 --- !u!114 &3275678181869816197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   paddingTop: 1
-  paddingBottom: 1
+  paddingBottom: 2
   paddingLeft: 1
   paddingRight: 1
 --- !u!114 &8507393279179423992
@@ -231,7 +234,7 @@ MonoBehaviour:
   bullet: {fileID: 2164637316664965211, guid: 99e382af47871e04d850da9bc295092e, type: 3}
   bulletSpeed: 10
   bulletLifeTime: 5
-  fireRatePlayer: 0.5
+  fireRatePlayer: 0.3
   fireRateBased: 1
   fireRateMaximum: 2
   fireRateVariance: 0.5
