@@ -14,8 +14,8 @@ public class UIDisplay : MonoBehaviour
 
     private void Awake()
     {
-        playerHealth = FindObjectOfType<Player>().GetComponent<Health>();
-        playerScore = FindObjectOfType<ScoreKeeper>();
+        playerHealth = FindAnyObjectByType<Player>().GetComponent<Health>();
+        playerScore = FindAnyObjectByType<ScoreKeeper>();
     }
     
     void Start()

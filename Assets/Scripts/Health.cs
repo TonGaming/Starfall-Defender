@@ -29,14 +29,14 @@ public class Health : MonoBehaviour
 
     void Awake()
     {
-        cameraShake = FindObjectOfType<CameraShake>();
+        cameraShake = FindAnyObjectByType<CameraShake>();
         // cameraShake = Camera.main.GetComponent<CameraShake>();
 
-        audioPlayer = FindObjectOfType<AudioPlayer>();
+        audioPlayer = FindAnyObjectByType<AudioPlayer>();
 
-        levelManager = FindObjectOfType<LevelManager>();
+        levelManager = FindAnyObjectByType<LevelManager>();
 
-        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        scoreKeeper = FindAnyObjectByType<ScoreKeeper>();
     }
 
     public int GetHealth()

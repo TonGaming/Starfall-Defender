@@ -15,7 +15,7 @@ public class LevelManager : MonoBehaviour
 
     private void Awake()
     {
-        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        scoreKeeper = FindAnyObjectByType<ScoreKeeper>();
     }
 
     

@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     Shooter shooter;
     private void Awake()
     {
-        shooter = FindObjectOfType<Shooter>();
+        shooter = FindAnyObjectByType<Shooter>();
     }
 
     // Start is called before the first frame update
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
 
     void Fly()
     {
-        ;
+        
 
         // di chuyển player = velocity của rigidbody
         playerRigidbody.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);

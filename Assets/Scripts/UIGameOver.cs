@@ -12,7 +12,7 @@ public class UIGameOver : MonoBehaviour
     private void Awake()
     {
         playerScoreUI = GetComponent<TextMeshProUGUI>();
-        scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        scoreKeeper = FindAnyObjectByType<ScoreKeeper>();
     }
 
     // Start is called before the first frame update

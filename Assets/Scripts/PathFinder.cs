@@ -16,7 +16,7 @@ public class PathFinder : MonoBehaviour
     void Awake()
     {
         
-        enemySpawner = FindObjectOfType<EnemySpawner>();
+        enemySpawner = FindAnyObjectByType<EnemySpawner>();
     }
 
     void Start()
