@@ -91,6 +91,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 50
   hitEffects: {fileID: 2189265254340297023, guid: a1bd805d5a6a8594caafc8c3425a4671, type: 3}
+  isPlayer: 0
+  applyingCameraShake: 0
+  scorePerKill: 50
+  fillArea: {fileID: 0}
 --- !u!114 &-1120154318184269338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,8 +124,8 @@ MonoBehaviour:
   bulletSpeed: 10
   bulletLifeTime: 5
   fireRatePlayer: 1
-  fireRateBased: 1
-  fireRateMaximum: 2
+  fireRateBased: 2
+  fireRateMaximum: 3.5
   fireRateVariance: 0.5
   useAI: 1
   isFiring: 0
@@ -133,6 +137,7 @@ CapsuleCollider2D:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2955465459855485409}
   m_Enabled: 1
+  serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -156,7 +161,8 @@ CapsuleCollider2D:
     m_Bits: 4294967295
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
   m_Offset: {x: -0.000000013586392, y: -0.11397093}
   m_Size: {x: 2.42983, y: 2.42983}
   m_Direction: 1
@@ -209,6 +215,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

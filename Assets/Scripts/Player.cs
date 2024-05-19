@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IPointerUpHandler, IPointerMoveHandler, IPointerDownHandler
 {
     [SerializeField] float moveSpeed = 2f;
 
@@ -42,8 +43,13 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+#if (UNITYSTANDALONE || UNITYWEBGL)
         Fly();
+#endif
+
     }
+#if (UNITYSTANDALONE || UNITYWEBGL)
 
     void InitializationBounds()
     {
@@ -68,7 +74,7 @@ public class Player : MonoBehaviour
 
     void Fly()
     {
-        
+
 
         // di chuyển player = velocity của rigidbody
         playerRigidbody.velocity = new Vector2(moveInput.x * moveSpeed, moveInput.y * moveSpeed);
@@ -101,4 +107,49 @@ public class Player : MonoBehaviour
 
         shooter.isFiring = value.isPressed;
     }
+
+
+#endif
+
+    void InitializationBounds()
+    {
+        Camera mainCamera = Camera.main;
+
+        // mặc dù phải truyền vào Vector3 nhưng nếu ta truyền vào Vector2 thì default toạ độ trục Z sẽ =  0 luôn
+        // cta bỏ qua trục Z vì đây là game 2D, nên chỉ cần Vector2 là đủ
+
+        // điểm dưới trái của ViewPort (0, 0)
+        minBounds = mainCamera.ViewportToWorldPoint(new Vector2(0, 0));
+        // điểm trên phải của ViewPort (1,1)
+        maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 1));
+    }
+
+    public void OnPointerMove(PointerEventData eventData)
+    {
+        // Lấy giá trị di chuyển từ sự kiện cảm ứng
+        Vector2 moveInput = eventData.delta;
+
+        // Chuyển đổi giá trị di chuyển thành thực thể di chuyển
+        Vector2 velocity = moveInput.normalized * moveSpeed;
+
+        // Gán vận tốc cho rigidbody
+        playerRigidbody.velocity = velocity;
+
+        // Kiểm tra và giới hạn vị trí mới của người chơi
+        Vector2 newPos = transform.position;
+        newPos.x = Mathf.Clamp(newPos.x + moveInput.x, minBounds.x + paddingLeft, maxBounds.x - paddingRight);
+        newPos.y = Mathf.Clamp(newPos.y + moveInput.y, minBounds.y + paddingBottom, maxBounds.y - paddingTop);
+        transform.position = newPos;
+    }
+
+    public void OnPointerUp( PointerEventData eventData)
+    {
+        shooter.isFiring = false;
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        shooter.isFiring = true; 
+    }
+
 }
